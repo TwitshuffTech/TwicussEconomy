@@ -1,0 +1,4 @@
+money:
+  10000: "bill"
+  1000: "bill"
+  100: "coin"

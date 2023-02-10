@@ -1,6 +1,6 @@
 name: TwicussEconomy
 version: '${project.version}'
-main: ten.sndd.elbmutssuciwt.twicusseconomy.TwicussEconomy
+main: net.ddns.twicusstumble.twicusseconomy.TwicussEconomy
 authors: [ RED_wing ]
 description: Add the concept of "shuff" economics to the game.
 commands:

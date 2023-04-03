@@ -45,11 +45,23 @@ public class Money {
         return map;
     }
 
-    public static boolean isPositiveNumeric(String str) {
-        return str.matches("\\d+(?:\\.\\d+)?");
-    }
-
     public static int normalize(double amount) {
         return ((int)amount / 100) * 100;
+    }
+
+    public static String formatToInteger(double value) {
+        return "￥" + new DecimalFormat("###,##0").format(value);
+    }
+
+    public static String formatToInteger(double value, ChatColor color) {
+        return color + "￥" + new DecimalFormat("###,##0").format(value) + ChatColor.RESET;
+    }
+
+    public static String formatToDecimal(double value) {
+        return "￥" + new DecimalFormat("###,##0.0").format(value);
+    }
+
+    public static String formatToDecimal(double value, ChatColor color) {
+        return color + "￥" + new DecimalFormat("###,##0.0").format(value) + ChatColor.RESET;
     }
 }

@@ -1,19 +1,24 @@
-package net.ddns.twicusstumble.twicusseconomy.system;
+package net.ddns.twicusstumble.twicusseconomy.ATM;
 
+import net.ddns.twicusstumble.twicusseconomy.system.Account;
+import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class ATM {
-    public static boolean canOperateATM(Player player, Bankbook bankbook, String password) {
+    public static boolean canOperate(Player player, ItemStack itemStack, String password) {
         if (!isPlayerLookingAtATM(player)) {
             player.sendMessage("近くにATMが存在しません");
             return false;
         }
-        if (!bankbook.isBankbook()) {
+        if (!Bankbook.isBankbook(itemStack)) {
             player.sendMessage("通帳を手に持ってください");
             return false;
         }
+
+        Bankbook bankbook = new Bankbook(itemStack);
 
         if (password.equals("MASTERKEY")) {
             return true;

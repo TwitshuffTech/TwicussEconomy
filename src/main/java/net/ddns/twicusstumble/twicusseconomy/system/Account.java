@@ -33,6 +33,10 @@ public class Account {
         return database.getMoney(name);
     }
 
+    public static double getMoney(String name) {
+        return database.getMoney(name);
+    }
+
     public boolean exists() {
         return database.checkAccountExistence(name);
     }

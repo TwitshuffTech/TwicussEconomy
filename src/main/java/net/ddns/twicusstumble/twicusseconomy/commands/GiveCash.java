@@ -11,15 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.ddns.twicusstumble.twicusseconomy.TwicussEconomy;
 
-public class GiveCash implements CommandExecutor {
-    private final TwicussEconomy plugin;
-
-    public GiveCash(TwicussEconomy plugin) {
-        this.plugin = plugin;
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class GiveCash {
+    public static boolean runCommand(TwicussEconomy plugin, CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2 && Utils.isPositiveNumeric(args[1])) {
             int amount = Money.normalize(Integer.parseInt(args[1]));
             Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);

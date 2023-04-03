@@ -8,9 +8,8 @@ import org.bukkit.command.CommandSender;
 import net.ddns.twicusstumble.twicusseconomy.system.Account;
 import net.ddns.twicusstumble.twicusseconomy.system.Money;
 
-public class GiveMoney implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class GiveMoney {
+    public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2 && Utils.isPositiveNumeric(args[1])) {
             String accountName = args[0];
             double amount = Double.parseDouble(args[1]);

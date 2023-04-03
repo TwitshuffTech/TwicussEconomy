@@ -13,15 +13,8 @@ import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
 import net.ddns.twicusstumble.twicusseconomy.system.InventoryCash;
 import net.ddns.twicusstumble.twicusseconomy.system.Money;
 
-public class Deposit implements CommandExecutor {
-    private final TwicussEconomy plugin;
-
-    public Deposit(TwicussEconomy plugin) {
-        this.plugin = plugin;
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class Deposit {
+    public static boolean runCommand(TwicussEconomy plugin, CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 2 && Utils.isPositiveNumeric(args[0])) {
             int amount = Money.normalize(Integer.parseInt(args[0]));
             String password = args[1];

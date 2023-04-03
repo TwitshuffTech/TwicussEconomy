@@ -13,9 +13,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class Shop implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class CreateShop {
+    public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 2) {
             if (!Utils.isPositiveInteger(args[0]) || !Utils.isPositiveInteger(args[1])) {
                 sender.sendMessage("引数は自然数で入力してください");

@@ -3,13 +3,11 @@ package net.ddns.twicusstumble.twicusseconomy.commands;
 import net.ddns.twicusstumble.twicusseconomy.system.Account;
 import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CreateAccount implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class CreateAccount {
+    public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2) {
             String accountName = args[0];
             String password = args[1];

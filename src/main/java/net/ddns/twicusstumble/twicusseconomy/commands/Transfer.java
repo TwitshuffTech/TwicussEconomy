@@ -12,9 +12,8 @@ import net.ddns.twicusstumble.twicusseconomy.ATM.ATM;
 import net.ddns.twicusstumble.twicusseconomy.system.Account;
 import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
 
-public class Transfer implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class Transfer {
+    public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 3 && Utils.isPositiveNumeric(args[1])) {
             String targetAccountName = args[0];
             double amount = Double.parseDouble(args[1]);

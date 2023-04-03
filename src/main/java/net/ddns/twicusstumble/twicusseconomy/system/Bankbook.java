@@ -33,11 +33,11 @@ public class Bankbook {
         return new Bankbook(bankbook);
     }
 
-    public boolean isBankbook() {
-        if (!bankbook.getType().equals(Material.WRITTEN_BOOK)) {
+    public static boolean isBankbook(ItemStack itemStack) {
+        if (!itemStack.getType().equals(Material.WRITTEN_BOOK)) {
             return false;
         } else {
-            BookMeta bookMeta = (BookMeta)bankbook.getItemMeta();
+            BookMeta bookMeta = (BookMeta)itemStack.getItemMeta();
             if (bookMeta.hasAuthor() && bookMeta.getAuthor().equals("System") && bookMeta.hasGeneration() && bookMeta.getGeneration().equals(BookMeta.Generation.ORIGINAL)) {
                 return true;
             } else {

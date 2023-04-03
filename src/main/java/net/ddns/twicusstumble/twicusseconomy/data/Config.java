@@ -8,13 +8,11 @@ import java.util.LinkedHashMap;
 
 public class Config {
     private static Config instance;
-    private final TwicussEconomy plugin;
     private FileConfiguration config;
 
     private LinkedHashMap<Integer, String> moneyList;
 
     private Config(TwicussEconomy plugin) {
-        this.plugin = plugin;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
         moneyList = getMoneyList();

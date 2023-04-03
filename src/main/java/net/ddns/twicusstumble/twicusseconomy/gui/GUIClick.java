@@ -1,16 +1,15 @@
 package net.ddns.twicusstumble.twicusseconomy.gui;
 
+import net.ddns.twicusstumble.twicusseconomy.util.UUIDList;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
-import net.ddns.twicusstumble.twicusseconomy.system.ATM;
-import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
+import net.ddns.twicusstumble.twicusseconomy.ATM.ATM;
 
-import java.util.Set;
+import java.util.UUID;
 
 public class GUIClick implements Listener {
     public static final String WITHDRAW_TAG = "GUIWithdraw";
@@ -37,11 +36,11 @@ public class GUIClick implements Listener {
             return;
         }
 
-        Set<String> userTags = player.getScoreboardTags();
+        UUID uuid = player.getUniqueId();
         String flag = null;
-        if (userTags.contains(WITHDRAW_TAG)) {
+        if (UUIDList.GUI_WITHDRAW.contains(uuid)) {
             flag = WITHDRAW_TAG;
-        } else if (userTags.contains(DEPOSIT_TAG)) {
+        } else if (UUIDList.GUI_DEPOSIT.contains(uuid)) {
             flag = DEPOSIT_TAG;
         }
 
@@ -49,11 +48,11 @@ public class GUIClick implements Listener {
             switch (buttonName) {
                 case "出金":
                     player.openInventory(new PasswordGUI("").getGUI());
-                    player.addScoreboardTag(WITHDRAW_TAG);
+                    UUIDList.GUI_WITHDRAW.add(uuid);
                     break;
                 case "入金":
                     player.openInventory(new PasswordGUI("").getGUI());
-                    player.addScoreboardTag(DEPOSIT_TAG);
+                    UUIDList.GUI_DEPOSIT.add(uuid);
                     break;
             }
         } else if (title.startsWith("Password: ")) {
@@ -64,7 +63,7 @@ public class GUIClick implements Listener {
                 }
                 player.openInventory(new PasswordGUI(password.substring(0, password.length() - 1)).getGUI());
             } else if (password.length() == 3) {
-                if (ATM.canOperateATM(player, new Bankbook(player.getInventory().getItemInMainHand()), password + buttonName)) {
+                if (ATM.canOperate(player, player.getInventory().getItemInMainHand(), password + buttonName)) {
                     player.openInventory(new AmountGUI("").getGUI());
                 } else {
                     GUIClose.close(player);
@@ -74,10 +73,11 @@ public class GUIClick implements Listener {
             }
 
             if (flag.equals(WITHDRAW_TAG)) {
-                player.addScoreboardTag(WITHDRAW_TAG);
+                UUIDList.GUI_WITHDRAW.add(uuid);
             } else if (flag.equals(DEPOSIT_TAG)) {
-                player.addScoreboardTag(DEPOSIT_TAG);
+                UUIDList.GUI_DEPOSIT.add(uuid);
             }
+
         } else if (title.startsWith("Amount: ")) {
             String amount = String.join("", title.substring(8).split(","));
             if (buttonName.equals("Delete")) {
@@ -86,11 +86,11 @@ public class GUIClick implements Listener {
                 }
                 player.openInventory(new AmountGUI(amount.substring(0, amount.length() - 1)).getGUI());
             } else if (buttonName.equals("Enter")) {
-                if (userTags.contains(WITHDRAW_TAG)) {
+                if (UUIDList.GUI_WITHDRAW.contains(uuid)) {
                     player.performCommand("withdraw " + amount + " MASTERKEY");
                     GUIClose.close(player);
                     return;
-                } else if (userTags.contains(DEPOSIT_TAG)) {
+                } else if (UUIDList.GUI_DEPOSIT.contains(uuid)) {
                     player.performCommand("deposit " + amount + " MASTERKEY");
                     GUIClose.close(player);
                     return;
@@ -100,19 +100,10 @@ public class GUIClick implements Listener {
             }
 
             if (flag.equals(WITHDRAW_TAG)) {
-                player.addScoreboardTag(WITHDRAW_TAG);
+                UUIDList.GUI_WITHDRAW.add(uuid);
             } else if (flag.equals(DEPOSIT_TAG)) {
-                player.addScoreboardTag(DEPOSIT_TAG);
+                UUIDList.GUI_DEPOSIT.add(uuid);
             }
-        }
-    }
-
-    @EventHandler
-    public void onInventoryClick(InventoryDragEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        Set<String> UserTags = event.getWhoClicked().getScoreboardTags();
-        if (UserTags.contains("GUIOpen")) {
-            event.setCancelled(true);
         }
     }
 }

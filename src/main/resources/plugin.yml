@@ -37,6 +37,10 @@ commands:
     description: show all balances
     permission: twicusseconomics.admin
     usage: /<command>
+  shop:
+    description: create item shop
+    permission: twicusseconomics.admin
+    usage: /<command> <price> <amount>
 permissions:
   twicusseconomics.admin:
     default: op

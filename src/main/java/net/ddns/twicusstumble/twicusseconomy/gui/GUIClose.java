@@ -1,30 +1,26 @@
 package net.ddns.twicusstumble.twicusseconomy.gui;
 
+import net.ddns.twicusstumble.twicusseconomy.util.UUIDList;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import java.util.Set;
+import java.util.UUID;
 
 public class GUIClose implements Listener {
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        Set<String> UserTags = event.getPlayer().getScoreboardTags();
-        if (UserTags.contains("GUIWithdraw")) {
-            event.getPlayer().removeScoreboardTag("GUIWithdraw");
-        } else if (UserTags.contains("GUIDeposit")) {
-            event.getPlayer().removeScoreboardTag("GUIDeposit");
-        }
+        UUID uuid = event.getPlayer().getUniqueId();
+        UUIDList.GUI_WITHDRAW.remove(uuid);
+        UUIDList.GUI_DEPOSIT.remove(uuid);
     }
 
     public static void close(Player player) {
-        Set<String> UserTags = player.getScoreboardTags();
-        if (UserTags.contains("GUIWithdraw")) {
-            player.getPlayer().removeScoreboardTag("GUIWithdraw");
-        } else if (UserTags.contains("GUIDeposit")) {
-            player.getPlayer().removeScoreboardTag("GUIDeposit");
-        }
+        UUID uuid = player.getUniqueId();
+        UUIDList.GUI_WITHDRAW.remove(uuid);
+        UUIDList.GUI_DEPOSIT.remove(uuid);
         player.closeInventory();
     }
 }

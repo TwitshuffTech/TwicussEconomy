@@ -87,11 +87,11 @@ public class GUIClick implements Listener {
                 player.openInventory(new AmountGUI(amount.substring(0, amount.length() - 1)).getGUI());
             } else if (buttonName.equals("Enter")) {
                 if (UUIDList.GUI_WITHDRAW.contains(uuid)) {
-                    player.performCommand("withdraw " + amount + " MASTERKEY");
+                    player.performCommand("te withdraw " + amount + " " + ATM.MASTER_KEY);
                     GUIClose.close(player);
                     return;
                 } else if (UUIDList.GUI_DEPOSIT.contains(uuid)) {
-                    player.performCommand("deposit " + amount + " MASTERKEY");
+                    player.performCommand("te deposit " + amount + " " + ATM.MASTER_KEY);
                     GUIClose.close(player);
                     return;
                 }

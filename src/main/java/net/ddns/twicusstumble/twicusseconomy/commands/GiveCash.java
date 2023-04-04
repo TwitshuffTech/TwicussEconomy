@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import net.ddns.twicusstumble.twicusseconomy.TwicussEconomy;
 
 public class GiveCash {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te give cash <player> <amount>" + ChatColor.RESET;
+
     public static boolean runCommand(TwicussEconomy plugin, CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2 && Utils.isPositiveNumeric(args[1])) {
             int amount = Money.normalize(Integer.parseInt(args[1]));
@@ -28,6 +30,8 @@ public class GiveCash {
 
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

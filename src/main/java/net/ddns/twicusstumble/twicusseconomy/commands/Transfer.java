@@ -13,6 +13,8 @@ import net.ddns.twicusstumble.twicusseconomy.system.Account;
 import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
 
 public class Transfer {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te transfer <destination> <amount> <password>" + ChatColor.RESET;
+
     public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 3 && Utils.isPositiveNumeric(args[1])) {
             String targetAccountName = args[0];
@@ -54,6 +56,8 @@ public class Transfer {
 
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

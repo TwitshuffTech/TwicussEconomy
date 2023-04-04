@@ -14,6 +14,8 @@ import net.ddns.twicusstumble.twicusseconomy.system.InventoryCash;
 import net.ddns.twicusstumble.twicusseconomy.system.Money;
 
 public class Deposit {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te deposit <amount> <password>" + ChatColor.RESET;
+
     public static boolean runCommand(TwicussEconomy plugin, CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 2 && Utils.isPositiveNumeric(args[0])) {
             int amount = Money.normalize(Integer.parseInt(args[0]));
@@ -45,6 +47,8 @@ public class Deposit {
             sender.sendMessage("残高は " + Money.formatToInteger(account.getMoney(), ChatColor.GOLD) + " です");
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

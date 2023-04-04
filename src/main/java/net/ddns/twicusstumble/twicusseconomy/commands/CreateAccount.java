@@ -2,11 +2,14 @@ package net.ddns.twicusstumble.twicusseconomy.commands;
 
 import net.ddns.twicusstumble.twicusseconomy.system.Account;
 import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CreateAccount {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te account create <account name> <password>" + ChatColor.RESET;
+
     public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2) {
             String accountName = args[0];
@@ -34,6 +37,8 @@ public class CreateAccount {
             sender.sendMessage("新しいアカウントを作成しました");
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

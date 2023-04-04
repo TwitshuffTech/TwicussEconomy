@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class ATM {
+    public static final String MASTER_KEY = "MASTER_KEY";
+
     public static boolean canOperate(Player player, ItemStack itemStack, String password) {
         if (!isPlayerLookingAtATM(player)) {
             player.sendMessage("近くにATMが存在しません");
@@ -20,7 +22,7 @@ public class ATM {
 
         Bankbook bankbook = new Bankbook(itemStack);
 
-        if (password.equals("MASTERKEY")) {
+        if (password.equals(MASTER_KEY)) {
             return true;
         }
 

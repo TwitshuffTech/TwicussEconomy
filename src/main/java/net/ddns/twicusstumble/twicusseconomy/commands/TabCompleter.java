@@ -19,16 +19,56 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
-            completions.addAll(Arrays.asList(COMMANDS));
+            if (args[0].equalsIgnoreCase(" ")) {
+                completions.addAll(Arrays.asList(COMMANDS));
+            } else {
+                for (String cmd : COMMANDS) {
+                    if (cmd.startsWith(args[0].toLowerCase())) {
+                        completions.add(cmd);
+                    }
+                }
+            }
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("account")) {
-                completions.addAll(Arrays.asList(ACCOUNT_PARAMS));
+                if (args[1].equalsIgnoreCase(" ")) {
+                    completions.addAll(Arrays.asList(ACCOUNT_PARAMS));
+                } else {
+                    for (String param : ACCOUNT_PARAMS) {
+                        if (param.startsWith(args[1].toLowerCase())) {
+                            completions.add(param);
+                        }
+                    }
+                }
             } else if (args[0].equalsIgnoreCase("password")) {
-                completions.addAll(Arrays.asList(PASSWORD_PARAMS));
+                if (args[1].equalsIgnoreCase(" ")) {
+                    completions.addAll(Arrays.asList(PASSWORD_PARAMS));
+                } else {
+                    for (String param : PASSWORD_PARAMS) {
+                        if (param.startsWith(args[1].toLowerCase())) {
+                            completions.add(param);
+                        }
+                    }
+                }
             } else if (args[0].equalsIgnoreCase("give")) {
-                completions.addAll(Arrays.asList(GIVE_PARAMS));
+                if (args[1].equalsIgnoreCase(" ")) {
+                    completions.addAll(Arrays.asList(GIVE_PARAMS));
+                } else {
+                    for (String param : GIVE_PARAMS) {
+                        if (param.startsWith(args[1].toLowerCase())) {
+                            completions.add(param);
+                        }
+                    }
+                }
             } else if (args[0].equalsIgnoreCase("shop")) {
-                completions.addAll(Arrays.asList(SHOP_PARAMS));
+                if (args[1].equalsIgnoreCase(" ")) {
+                    completions.addAll(Arrays.asList(SHOP_PARAMS));
+                } else {
+                    for (String param : SHOP_PARAMS) {
+                        if (param.startsWith(args[1].toLowerCase())) {
+                            completions.add(param);
+                        }
+                    }
+                }
             }
         }
 

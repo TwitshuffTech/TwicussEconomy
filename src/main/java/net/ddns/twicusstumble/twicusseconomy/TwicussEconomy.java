@@ -14,19 +14,6 @@ public final class TwicussEconomy extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-//        getCommand("createaccount").setExecutor(new CreateAccount());
-//        getCommand("changepassword").setExecutor(new ChangePassword());
-//        getCommand("deleteaccount").setExecutor(new DeleteAccount());
-//        getCommand("reissue").setExecutor(new Reissue());
-//        getCommand("deposit").setExecutor(new Deposit(this));
-//        getCommand("withdraw").setExecutor(new Withdraw(this));
-//        getCommand("transfer").setExecutor(new Transfer());
-//        getCommand("givecash").setExecutor(new GiveCash(this));
-//        getCommand("givemoney").setExecutor(new GiveMoney());
-//        getCommand("showallaccounts").setExecutor(new ShowAllAccounts());
-
-//        getCommand("shop").setExecutor(new CreateShop());
-
         getCommand("te").setExecutor(CommandHandler.getInstance(this));
         getCommand("te").setTabCompleter(new TabCompleter());
 

@@ -9,6 +9,8 @@ import net.ddns.twicusstumble.twicusseconomy.system.Account;
 import net.ddns.twicusstumble.twicusseconomy.system.Money;
 
 public class GiveMoney {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te give money <account name> <amount>" + ChatColor.RESET;
+
     public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2 && Utils.isPositiveNumeric(args[1])) {
             String accountName = args[0];
@@ -30,6 +32,8 @@ public class GiveMoney {
 
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

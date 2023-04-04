@@ -231,6 +231,7 @@ public class Database {
         }
         return null;
     }
+
     public String getPassword(String accountName) {
         try {
             Class.forName("org.sqlite.JDBC");

@@ -58,6 +58,8 @@ public class ProtectShop implements Listener {
         UUID uuid = event.getWhoClicked().getUniqueId();
         if (UUIDList.OPEN_SHOP_AS_CUSTOMER.contains(uuid)) {
             event.setCancelled(true);
+            event.getWhoClicked().closeInventory();
+            event.getWhoClicked().sendMessage("登録した通帳を手にもってください");
         } else if (UUIDList.OPEN_SHOP_AS_OWNER.contains(uuid)) {
 
         }

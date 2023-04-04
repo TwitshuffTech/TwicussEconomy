@@ -42,16 +42,10 @@ public class Transfer {
 
                 bankbook.updateText();
 
-                sender.sendMessage(targetAccount.getName() + " に " + Money.formatToDecimal(amount, ChatColor.GOLD) + " 送金しました");
-                sender.sendMessage("残高は " + Money.formatToDecimal(targetAccount.getMoney(), ChatColor.GOLD) + " です");
-
-                Player targetPlayer = Bukkit.getServer().getPlayer(targetAccount.getName());
-                if (targetPlayer != null) {
-                    targetPlayer.sendMessage(account.getName() + " から " + Money.formatToDecimal(amount, ChatColor.GOLD) + " 送金されました");
-                    targetPlayer.sendMessage("残高は " + Money.formatToDecimal(targetAccount.getMoney(), ChatColor.GOLD) + " です");
-                }
+                sender.sendMessage("アカウント " + targetAccount.getName() + " に " + Money.formatToDecimal(amount, ChatColor.GOLD) + " 送金しました");
+                sender.sendMessage("残高は " + Money.formatToDecimal(account.getMoney(), ChatColor.GOLD) + " です");
             } else {
-                sender.sendMessage("存在しないプレイヤー名です");
+                sender.sendMessage("存在しないアカウント名です");
             }
 
             return true;

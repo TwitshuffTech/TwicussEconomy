@@ -5,42 +5,6 @@ authors: [ RED_wing ]
 description: Add the concept of "shuff" economics to the game.
 commands:
   te:
-#  createaccount:
-#    description: create your account
-#    usage: /<command> <account name> <password>
-#  changepassword:
-#    description: reset your account password
-#    usage: /<command> <account name> <old password> <new password>
-#  deleteaccount:
-#    description: delete your account
-#    usage: /<command> <account name> <password>
-#  reissue:
-#    description: reissue your bank book
-#    usage: /<command> <account name> <password>
-#  deposit:
-#    description: deposit money to your account
-#    usage: /<command> <amount> <password>
-#  withdraw:
-#    description: withdraw money from your account
-#    usage: /<command> <amount> <password>
-#  transfer:
-#    description: transfer money from your account to the specific account
-#    usage: /<command> <account name> <amount> <password>
-#  givemoney:
-#    description: give money to the specified player's account
-#    permission: twicusseconomics.admin
-#    usage: /<command> <player> <amount>
-#  givecash:
-#    description: give cash to the specified player
-#    permission: twicusseconomics.admin
-#    usage: /<command> <player> <amount>
-#  showallaccounts:
-#    description: show all balances
-#    permission: twicusseconomics.admin
-#    usage: /<command>
-#  shop:
-#    description: create item shop
-#    usage: /<command> <price> <amount>
 permissions:
   twicusseconomics.admin:
     default: op

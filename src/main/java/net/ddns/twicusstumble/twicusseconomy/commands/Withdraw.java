@@ -10,15 +10,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.ddns.twicusstumble.twicusseconomy.TwicussEconomy;
 
-public class Withdraw implements CommandExecutor {
-    private final TwicussEconomy plugin;
+public class Withdraw {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te withdraw <amount> <password>" + ChatColor.RESET;
 
-    public Withdraw(TwicussEconomy plugin) {
-        this.plugin = plugin;
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public static boolean runCommand(TwicussEconomy plugin, CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 2 && Utils.isPositiveNumeric(args[0])) {
             int amount = Money.normalize(Integer.parseInt(args[0]));
             String password = args[1];
@@ -46,6 +41,8 @@ public class Withdraw implements CommandExecutor {
             sender.sendMessage("残高は " + Money.formatToDecimal(account.getMoney(), ChatColor.GOLD) + " です");
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

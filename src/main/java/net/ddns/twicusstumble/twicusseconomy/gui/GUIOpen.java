@@ -13,7 +13,7 @@ public class GUIOpen implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getState() instanceof Sign && ATM.isPlayerLookingAtATM(event.getPlayer())) {
             Player player = event.getPlayer();
-            if (ATM.canOperate(player, player.getInventory().getItemInMainHand(), "MASTERKEY")) {
+            if (ATM.canOperate(player, player.getInventory().getItemInMainHand(), ATM.MASTER_KEY)) {
                 player.openInventory(new MenuGUI().getGUI());
             }
         }

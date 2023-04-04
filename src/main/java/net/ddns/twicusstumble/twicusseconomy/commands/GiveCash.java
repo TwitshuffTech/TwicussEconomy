@@ -11,15 +11,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import net.ddns.twicusstumble.twicusseconomy.TwicussEconomy;
 
-public class GiveCash implements CommandExecutor {
-    private final TwicussEconomy plugin;
+public class GiveCash {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te give cash <player> <amount>" + ChatColor.RESET;
 
-    public GiveCash(TwicussEconomy plugin) {
-        this.plugin = plugin;
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public static boolean runCommand(TwicussEconomy plugin, CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 2 && Utils.isPositiveNumeric(args[1])) {
             int amount = Money.normalize(Integer.parseInt(args[1]));
             Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
@@ -35,6 +30,8 @@ public class GiveCash implements CommandExecutor {
 
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

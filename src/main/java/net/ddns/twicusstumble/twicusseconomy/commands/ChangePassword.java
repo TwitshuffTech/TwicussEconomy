@@ -1,13 +1,15 @@
 package net.ddns.twicusstumble.twicusseconomy.commands;
 
 import net.ddns.twicusstumble.twicusseconomy.system.Account;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class ChangePassword implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class ChangePassword {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te password change <account name> <old password> <new password>" + ChatColor.RESET;
+
+    public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 3) {
             String accountName = args[0];
             String oldPassword = args[1];
@@ -32,6 +34,8 @@ public class ChangePassword implements CommandExecutor {
 
             return true;
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }

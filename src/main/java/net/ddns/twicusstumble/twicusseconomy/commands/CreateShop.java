@@ -4,6 +4,7 @@ import net.ddns.twicusstumble.twicusseconomy.system.Bankbook;
 import net.ddns.twicusstumble.twicusseconomy.system.Money;
 import net.ddns.twicusstumble.twicusseconomy.util.Utils;
 import net.ddns.twicusstumble.twicusseconomy.ItemShop.ItemShop;
+import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.block.Sign;
@@ -13,9 +14,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class Shop implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class CreateShop {
+    public static String ERROR_MESSAGE = ChatColor.RED + "usage: /te shop create <price> <unit amount>" + ChatColor.RESET;
+
+    public static boolean runCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args.length == 2) {
             if (!Utils.isPositiveInteger(args[0]) || !Utils.isPositiveInteger(args[1])) {
                 sender.sendMessage("引数は自然数で入力してください");
@@ -61,6 +63,8 @@ public class Shop implements CommandExecutor {
                 return false;
             }
         }
+
+        sender.sendMessage(ERROR_MESSAGE);
         return false;
     }
 }
